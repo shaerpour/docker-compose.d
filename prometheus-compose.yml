@@ -1,0 +1,13 @@
+version: "3"
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - "$PWD/config:/etc/prometheus:ro"
+
+# Simple prometheus configuration file:
+# https://raw.githubusercontent.com/prometheus/prometheus/main/documentation/examples/prometheus.yml
