@@ -1,0 +1,16 @@
+version: "3"
+services:
+  registry:
+    image: registry:2
+    container_name: registry
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - "$PWD/registry/data:/var/lib/registry"
+#      - "$PWD/registry/auth:/auth"
+#    environment:
+#      REGISTRY_AUTH: htpasswd
+#      REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+#      REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+# Uncomment upper lines for setup registry login.
