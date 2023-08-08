@@ -20,7 +20,7 @@ services:
   redis-slave:
     image: "redis"
     deploy:
-      replicas: 2
+      replicas: "<NUMBER OF SLAVE REPLICAS>"
       resources:
         limits:
           cpus: "<CPU>"
