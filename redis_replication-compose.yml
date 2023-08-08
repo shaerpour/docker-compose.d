@@ -1,0 +1,34 @@
+version: "3"
+services:
+  
+  redis-master:
+    image: "redis"
+    ports:
+      - "<PORT>:6379"
+    deploy:
+      resources:
+        limits:
+          cpus: "<CPU>"
+          memory: "<MEMORY>"
+        reservations:
+          cpus: "<CPU>"
+          memory: "<MEMORY>"
+      placement:
+        constraints:
+          - "node.hostname == <MASTER NODE NAME>"
+
+  redis-slave:
+    image: "redis"
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "<CPU>"
+          memory: "<MEMORY>"
+        reservations:
+          cpus: "<CPU>"
+          memory: "<MEMORY>"
+      placement:
+        constraints:
+          - "node.hostname == <SLAVE NODE NAME(S)>"
+    command: "redis-server --slaveof redis-master <PORT>"
